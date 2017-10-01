@@ -42,6 +42,9 @@ public class JobLauncherController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public long launch(@RequestParam("name") String name) throws Exception {
         return this.jobOperator.start("job", String.format("name=%s", name));
+
+
+
     }
 
 //    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -57,6 +60,8 @@ public class JobLauncherController {
         for(JobExecution execution : executions ){
             if (execution.getStatus() == BatchStatus.STARTED) {
                 jobOperator.stop(execution.getId());
+
+
             }
         }
     }
